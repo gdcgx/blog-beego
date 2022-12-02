@@ -1,6 +1,6 @@
 $(document).ready(function () {
     //注册
-    $("register-from").validate({
+    $("#register-form").validate({
         rules: {
             username: {
                 required: true,
@@ -39,7 +39,7 @@ $(document).ready(function () {
                 type: "post",
                 dataType: "json",
                 success: function (data, status) {
-                    alert("data:" + data.message)
+                    alert("data: " + data.message)
                     if (data.code == 1) {
                         setTimeout(function () {
                             window.location.href = "/login"
@@ -52,7 +52,6 @@ $(document).ready(function () {
             })
         }
     });
-
 
     //登录
     $("#login-form").validate({
@@ -77,14 +76,14 @@ $(document).ready(function () {
             }
         },
         submitHandler: function (form) {
-            var urlStr = "/login"
-            alert("urlStr:" + urlStr)
+            var urlStr = "/login";
+            // alert("urlStr:" + urlStr)
             $(form).ajaxSubmit({
                 url: urlStr,
                 type: "post",
                 dataType: "json",
                 success: function (data, status) {
-                    alert("data:" + data.message + ":" + status)
+                    alert("data: " + data.message)
                     if (data.code == 1) {
                         setTimeout(function () {
                             window.location.href = "/"

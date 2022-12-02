@@ -23,11 +23,6 @@ func (t *RegisterController) Post() {
 	username := t.GetString("username")
 	password := t.GetString("password")
 	repassword := t.GetString("repassword")
-	if password != repassword {
-		t.Data["json"] = map[string]interface{}{"code": 0, "message": "两次输入的密码不一致"}
-		t.ServeJSON()
-		return
-	}
 	fmt.Println(username, password, repassword)
 
 	//注册之前先判断该用户名是否已经被注册，如果已经注册，返回错误
