@@ -35,6 +35,7 @@ func InitMysql() {
 		fmt.Println(err.Error())
 	} else {
 		CreateTableWithUser()
+		CreateTableWithArticle()
 	}
 }
 
@@ -60,6 +61,19 @@ func CreateTableWithUser() {
 		username VARCHAR(64),
 		password VARCHAR(64),
 		status INT(4),
+		createtime INT(10)
+		);`
+	ModifyDB(sql)
+}
+
+func CreateTableWithArticle() {
+	sql := `CREATE TABLE IF NOT EXISTS article(
+		id INT(4) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+		title VARCHAR(30),
+		author VARCHAR(20),
+		tags VARCHAR(30),
+		short VARCHAR(255),
+		content LONGTEXT,
 		createtime INT(10)
 		);`
 	ModifyDB(sql)
